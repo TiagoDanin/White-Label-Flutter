@@ -1,0 +1,91 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.idopterlabs.apps.whitelabels_example"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.idopterlabs.apps.whitelabels_example"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        appA {
+            keyAlias 'yourKeyAliasAppA'
+            keyPassword 'yourKeyPasswordAppA'
+            storeFile file('path/to/your/keystoreAppA.jks')
+            storePassword 'yourStorePasswordAppA'
+        }
+        appB {
+            keyAlias 'yourKeyAliasAppB'
+            keyPassword 'yourKeyPasswordAppB'
+            storeFile file('path/to/your/keystoreAppB.jks')
+            storePassword 'yourStorePasswordAppB'
+        }
+        appC {
+            keyAlias 'yourKeyAliasAppC'
+            keyPassword 'yourKeyPasswordAppC'
+            storeFile file('path/to/your/keystoreAppC.jks')
+            storePassword 'yourStorePasswordAppC'
+        }
+    }
+
+    flavorDimensions "app"
+    productFlavors {
+        appA {
+            dimension "app"
+            applicationId = "com.idopterlabs.apps.whitelabels_example.appA"
+            versionCode 1
+            versionName "1.0"
+            // signingConfig signingConfigs.appA Example <<<
+        }
+
+        appB {
+            dimension "app"
+            applicationId = "com.idopterlabs.apps.whitelabels_example.appB"
+            versionCode 1
+            versionName "1.0"
+            // signingConfig signingConfigs.appB Example <<<
+        }
+
+        appC {
+            dimension "app"
+            applicationId = "com.idopterlabs.apps.whitelabels_example.appC"
+            versionCode 1
+            versionName "1.0"
+            // signingConfig signingConfigs.appC Example <<<
+        }
+    }
+
+    buildTypes {
+        // Example:
+        // release {}
+        // debug { signingConfig signingConfigs.debug }
+
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
