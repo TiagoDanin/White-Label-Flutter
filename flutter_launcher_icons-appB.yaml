@@ -1,0 +1,5 @@
+flutter_launcher_icons:
+  android: false
+  ios: true
+  remove_alpha_ios: true
+  image_path: "android/app/src/appB/ic_launcher-playstore.png"
